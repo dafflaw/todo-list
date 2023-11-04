@@ -32,7 +32,7 @@ body {
   padding-top: 1.3rem;
   padding-bottom: 0.5rem;
   font-size: 1.8rem;
-  color: #0c006b;
+  color: #1e293b;
 }
 
 .add--task {
@@ -101,7 +101,7 @@ body {
   border: none;
   background: none;
   cursor: pointer;
-  color: #474747;
+  color: #1e293b;
   font-weight: 500;
   font-family: "Montserrat";
   letter-spacing: -0.3px;
