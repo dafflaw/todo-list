@@ -13,12 +13,15 @@ html {
 }
 
 body {
+  height: 100vh;
   background: #181054;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
-  margin: 10rem auto;
   border-radius: 5px;
   background: #fff;
   width: 35rem;
@@ -98,6 +101,8 @@ body {
   border: none;
   background: none;
   cursor: pointer;
+  color: #474747;
+  font-weight: 500;
   font-family: "Montserrat";
   letter-spacing: -0.3px;
 }
@@ -180,7 +185,7 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
   position: absolute;
   top: 1.4rem;
   right: 0;
@@ -246,10 +251,11 @@ body {
 
   .task--status__list {
     padding: 1rem 2.2rem;
+    gap: 1rem;
   }
 
   .task--status__list button {
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
 
   .task--status__list button:last-child {
@@ -281,6 +287,6 @@ body {
 
 @media screen and (max-width: 298px) {
   .wrapper {
-    margin: 3rem auto 3rem 0.5rem;
+    margin: 3rem 0 3rem 1rem;
   }
 }
