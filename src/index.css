@@ -175,6 +175,7 @@ body {
   outline: none;
   border: none;
   background: none;
+  color: #1e293b;
 }
 
 .task--changes {
@@ -192,6 +193,10 @@ body {
   font-family: "Montserrat";
 }
 
+.task--changes__icon {
+  color: #1e293b;
+}
+
 .task--change {
   width: 100%;
   display: flex;
@@ -200,6 +205,7 @@ body {
   gap: 0.4rem;
   font-size: 1rem;
   font-weight: 500;
+  color: #1e293b;
 }
 
 .task--change:hover,
