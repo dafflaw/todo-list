@@ -162,7 +162,7 @@ body {
 
 .task--text {
   font-weight: 600;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #1e293b;
   line-height: 1.4;
 }
@@ -257,15 +257,15 @@ body {
 
   .task--status__list {
     padding: 1rem 2.2rem;
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .task--status__list button {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .task--status__list button:last-child {
-    font-size: 1rem;
+    font-size: 0.8rem;
     /* padding: 0; */
   }
 
