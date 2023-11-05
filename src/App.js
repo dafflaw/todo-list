@@ -16,6 +16,10 @@ export default function App() {
   const [tasksArray, setTasksArray] = useLocalStorage("notes", [])
   const [status, setStatus] = useState("all")
 
+  function updateArray() {
+    setTasksArray(() => [...tasksArray])
+  }
+
   // useEffect(() => {
   //   localStorage.setItem("notes", JSON.stringify(tasksArray))
   // }, [tasksArray])
@@ -47,6 +51,7 @@ export default function App() {
         tasks={tasksArray}
         changeTasks={handleChangeTasksArray}
         status={status}
+        updateArray={updateArray}
       />
     </div>
   )
@@ -56,7 +61,7 @@ function Heading() {
   return <h2 className="heading">What's the Plan for Today?</h2>
 }
 
-function AddTask({ onAddTask, onStatus }) {
+function AddTask({ onAddTask, onStatus, tasks }) {
   // const initialArr = localStorage.getItem("notes")
   // if (initialArr) changeTasks(() => JSON.parse(initialArr))
   const [task, setTask] = useState("")
@@ -64,7 +69,11 @@ function AddTask({ onAddTask, onStatus }) {
   function handleSubmit(e) {
     e.preventDefault()
 
-    if (!task || !task.replace(/\s/g, "").length) return
+    const taskIsRepeated = tasks.filter(
+      (cur) => cur.text.toLowerCase().trim() === task.toLowerCase().trim()
+    )
+    if (!task || !task.replace(/\s/g, "").length || taskIsRepeated.length > 0)
+      return
 
     const newItem = {
       text: task,
@@ -108,7 +117,7 @@ function TaskStatus({ onClick, onSetStatus }) {
   )
 }
 
-function TaskList({ tasks, changeTasks, status }) {
+function TaskList({ tasks, changeTasks, status, updateArray }) {
   const pendingArr = tasks?.filter((task) => task.status === "pending")
   const completedArr = tasks?.filter((task) => task.status === "completed")
   // let message = ""
@@ -126,6 +135,7 @@ function TaskList({ tasks, changeTasks, status }) {
               changeTasks={changeTasks}
               tasks={tasks}
               key={task.id}
+              updateArray={updateArray}
             />
           ))
         )
@@ -142,6 +152,7 @@ function TaskList({ tasks, changeTasks, status }) {
               changeTasks={changeTasks}
               tasks={tasks}
               key={task.id}
+              updateArray={updateArray}
             />
           ))
         )
@@ -158,6 +169,7 @@ function TaskList({ tasks, changeTasks, status }) {
               changeTasks={changeTasks}
               tasks={tasks}
               key={task.id}
+              updateArray={updateArray}
             />
           ))
         )
@@ -168,7 +180,7 @@ function TaskList({ tasks, changeTasks, status }) {
   )
 }
 
-function Task({ task, changeTasks, tasks }) {
+function Task({ task, changeTasks, tasks, updateArray }) {
   const [checked, setChecked] = useState(task.checked)
   const [changesTabs, setChangesTabs] = useState(false)
   const [editing, setEditing] = useState(false)
@@ -194,6 +206,7 @@ function Task({ task, changeTasks, tasks }) {
 
   function handleCheckbox() {
     setChecked(!checked)
+    updateArray()
   }
   // function handleInputChange() {
   //   setEditText()
@@ -229,6 +242,7 @@ function Task({ task, changeTasks, tasks }) {
         <button
           className="task--dots__button"
           onClick={() => setChangesTabs(!changesTabs)}
+          onBlur={() => setChangesTabs(false)}
         >
           <ion-icon
             name="ellipsis-horizontal-outline"

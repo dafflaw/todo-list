@@ -13,15 +13,17 @@ html {
 }
 
 body {
-  height: 100vh;
+  min-height: 100vh;
   background: #181054;
   font-family: "Montserrat", sans-serif;
+  padding: 10rem 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
+  margin: 0 auto;
   border-radius: 5px;
   background: #fff;
   width: 35rem;
@@ -130,10 +132,11 @@ body {
 
 .task {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
   padding-bottom: 2rem;
   line-height: 1;
+  /* overflow-wrap: break-word; */
 }
 
 .tasks-list p:first-child {
@@ -165,6 +168,7 @@ body {
   font-size: 1.2rem;
   color: #1e293b;
   line-height: 1.4;
+  word-break: break-word;
 }
 
 .task--dots__button {
